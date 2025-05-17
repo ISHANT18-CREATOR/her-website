@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Prachi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .photo-wall {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .photo-frame {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: rotate(var(--rotation));
+            transition: all 0.5s ease;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(var(--rotation));
+            z-index: 10;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-glow {
+            animation: glow 2s infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px -5px rgba(255, 255, 255, 0.8);
+            }
+            to {
+                box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .slide-up {
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .birthday-reveal {
+            animation: scaleIn 1.5s forwards;
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color);
+            opacity: 0.7;
+            animation: confetti-fall var(--fall-duration) forwards;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .photo-memory {
+            transition: all 0.5s ease;
+        }
+        
+        .photo-memory:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .message-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
+        }
+        
+        .choice-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .choice-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .choice-btn:hover::after {
+            left: 100%;
+        }
+        
+        .heart-float {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+        
+        .memory-illustration {
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory-illustration::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: all 0.6s ease;
+        }
+        
+        .memory-illustration:hover::after {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Landing Page -->
+    <div id="landing-page" class="min-h-screen flex flex-col items-center justify-center p-4 relative">
+        <div class="photo-wall absolute top-0 left-0 w-full h-full opacity-30">
+            <!-- SVG Photo Frames -->
+            <div class="photo-frame" style="--rotation: -5deg; top: 10%; left: 5%;">
+                <div class="bg-pink-100 h-24 w-24 md:h-32 md:w-32 flex items-center justify-center rounded">
+                    <img src="D:\HER\IMG-20250319-WA0015.jpg" alt="My Photo" class="object-cover h-full w-full" />
+                </div>
+            </div>
+            <div class="photo-frame" style="--rotation: 3deg; top: 15%; left: 70%;">
+                <div class="bg-blue-100 h-24 w-24 md:h-32 md:w-32 flex items-center justify-center rounded">
+                    <img src="D:\HER\IMG-20250319-WA0016.jpg" alt="My Photo 1" class="object-cover h-full w-full" />
+                </div>
+            </div>
+            <div class="photo-frame" style="--rotation: -8deg; top: 50%; left: 80%;">
+                <div class="bg-yellow-100 h-24 w-24 md:h-32 md:w-32 flex items-center justify-center rounded">
+                    <img src="D:\HER\Screenshot_2025-02-12-17-08-24-972_com.instagram.android.jpg" alt="My Photo 2" class="object-cover h-full w-full" />
+                </div>
+            </div>
+            <div class="photo-frame" style="--rotation: 6deg; top: 60%; left: 10%;">
+                <div class="bg-green-100 h-24 w-24 md:h-32 md:w-32 flex items-center justify-center rounded">
+                    <img src="D:\HER\IMG_20250308_212314_786.jpg" alt="My Photo 3" class="object-cover h-full w-full" />
+                </div>
+            </div>
+            <div class="photo-frame" style="--rotation: -3deg; top: 30%; left: 40%;">
+                <div class="bg-purple-100 h-24 w-24 md:h-32 md:w-32 flex items-center justify-center rounded">
+                    <img src="D:\HER\IMG_20250405_133502.jpg" alt="My Photo 4" class="object-cover h-full w-full" />
+                </div>
+            </div>
+            <div class="photo-frame" style="--rotation: 7deg; top: 70%; left: 50%;">
+                <div class="bg-red-100 h-24 w-24 md:h-32 md:w-32 flex items-center justify-center rounded">
+                    <img src="D:\HER\IMG-20250319-WA0012.jpg" alt="My Photo 5" class="object-cover h-full w-full" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="z-10 text-center fade-in" style="animation-delay: 0.5s;">
+            <h2 class="text-xl md:text-2xl mb-4 font-light">A special journey awaits...</h2>
+            <button id="start-button" class="bg-gradient-to-r from-pink-500 to-purple-600 px-8 py-3 rounded-full text-lg font-semibold tracking-wide btn-glow hover:from-pink-600 hover:to-purple-700 transition-all duration-300 flex items-center">
+                <span class="mr-2">Begin Experience</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                </svg>
+            </button>
+            <p class="mt-4 text-sm text-gray-300 italic">Click to start your emotional journey</p>
+        </div>
+    </div>
+
+    <!-- Birthday Reveal Page -->
+    <div id="birthday-reveal" class="min-h-screen flex flex-col items-center justify-center p-4 relative hidden">
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div id="confetti-container"></div>
+        </div>
+        
+        <div class="text-center z-10 birthday-reveal">
+            <h1 class="dancing-script text-5xl md:text-7xl lg:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300">Happy Birthday Prachi!</h1>
+            <div class="mt-6 mb-10">
+                <button id="play-birthday-music" class="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold">
+                    <span class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                        </svg>
+                        <span id="music-btn-text">Play Music</span>
+                    </span>
+                    </button>
+                    <audio id="birthday-audio" src="D:\HER\Untitled video - Made with Clipchamp (3) (1).mp3"></audio>
+                                <p class="text-xs mt-2 text-gray-300">Music: "Pretty Little Baby" (Demo Only)</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <button id="photo-choice" class="choice-btn bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 p-6 rounded-xl transition-all duration-300 flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <h3 class="text-xl font-semibold mb-2">Special Memories</h3>
+                    <p class="text-sm opacity-90">View our journey together</p>
+                </button>
+                
+                <button id="message-choice" class="choice-btn bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 p-6 rounded-xl transition-all duration-300 flex flex-col items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <h3 class="text-xl font-semibold mb-2">Birthday Message</h3>
+                    <p class="text-sm opacity-90">Read a heartfelt note just for you</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Journey Page -->
+    <div id="photo-journey" class="min-h-screen flex flex-col items-center justify-center p-4 relative hidden">
+        <div class="absolute top-4 left-4 z-20">
+            <button id="back-from-photos" class="flex items-center text-white bg-black bg-opacity-50 px-4 py-2 rounded-full hover:bg-opacity-70 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back
+            </button>
+        </div>
+        
+        <div class="text-center mb-8 slide-up">
+            <h2 class="dancing-script text-4xl md:text-5xl mb-2">Our Roller Coaster Journey</h2>
+            <p class="text-gray-300">Beautiful moments with you, Prachi</p>
+            <button id="play-mitwa-music" class="mt-4 inline-block px-6 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-teal-400 text-white text-sm">
+                <span class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                    </svg>
+                    <span id="mitwa-btn-text">Play "Mitwa" </span>
+                </span>
+                </button>
+                <audio id="journey-audio" src="D:\HER\Untitled video - Made with Clipchamp (2).mp3"></audio>
+                    </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <!-- Memory Illustrations -->
+            <div class="photo-memory bg-white rounded-lg overflow-hidden shadow-lg" style="animation-delay: 0.2s;">
+                <div class="h-48 bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center memory-illustration">
+                    <img src="D:\HER\IMG-20250307-WA0002(1).jpg" alt="First Meeting" class="object-cover h-full w-full" />        
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800">First Meeting</h3>
+                    <p class="text-gray-600 text-sm">kafi funny tha lol</p>
+                </div>
+            </div>
+            
+            <div class="photo-memory bg-white rounded-lg overflow-hidden shadow-lg" style="animation-delay: 0.4s;">
+                <div class="h-48 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center memory-illustration">
+                    <img src="D:\HER\IMG-20250314-WA0032.jpg" alt="Our First Date" class="object-cover h-full w-full" />
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800">Our Roller Coaster</h3>
+                    <p class="text-gray-600 text-sm">holi wali masti</p>
+                </div>
+            </div>
+            
+            <div class="photo-memory bg-white rounded-lg overflow-hidden shadow-lg" style="animation-delay: 0.6s;">
+                <div class="h-48 bg-gradient-to-br from-yellow-100 to-orange-100 flex items-center justify-center memory-illustration">
+                    <img src="D:\HER\IMG_20250405_133442.jpg" alt="Your Smile" class="object-cover h-full w-full" />
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800">Your pretty Smile</h3>
+                    <p class="text-gray-600 text-sm">The one I always want to see</p>
+                </div>
+            </div>
+            
+            <div class="photo-memory bg-white rounded-lg overflow-hidden shadow-lg" style="animation-delay: 0.8s;">
+                <div class="h-48 bg-gradient-to-br from-red-100 to-pink-100 flex items-center justify-center memory-illustration">
+                    <img src="D:\HER\Screenshot_2025-05-07-16-54-21-453_com.instagram.android.jpg" alt="My Love" class="object-cover h-full w-full" />
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800">Traditional look</h3>
+                    <p class="text-gray-600 text-sm">The prettiest</p>
+                </div>
+            </div>
+            
+            <div class="photo-memory bg-white rounded-lg overflow-hidden shadow-lg" style="animation-delay: 1s;">
+                <div class="h-48 bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center memory-illustration">
+                    <img src="D:\HER\Screenshot_2025-05-07-16-54-14-123_com.instagram.android.jpg" alt="Our Special Moment" class="object-cover h-full w-full" />
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800">Swarg se utri</h3>
+                    <p class="text-gray-600 text-sm">kokil kanthi apsara</p>
+                </div>
+            </div>
+            
+            <div class="photo-memory bg-white rounded-lg overflow-hidden shadow-lg" style="animation-delay: 1.2s;">
+                <div class="h-48 bg-gradient-to-br from-purple-100 to-violet-100 flex items-center justify-center memory-illustration">
+                    <img src="D:\HER\IMG-20250319-WA0018.jpg" alt="Forever Yours" class="object-cover h-full w-full" />
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-gray-800">Forever Yours</h3>
+                    <p class="text-gray-600 text-sm">No matter what happens</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-10 text-center">
+            <button id="continue-to-message" class="bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-3 rounded-full text-lg font-semibold tracking-wide hover:from-purple-600 hover:to-pink-600 transition-all duration-300">
+                Continue to Birthday Message
+            </button>
+        </div>
+    </div>
+
+    <!-- Birthday Message Page -->
+    <div id="birthday-message" class="min-h-screen flex flex-col items-center justify-center p-4 relative hidden">
+        <div class="absolute top-4 left-4 z-20">
+            <button id="back-from-message" class="flex items-center text-white bg-black bg-opacity-50 px-4 py-2 rounded-full hover:bg-opacity-70 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back
+            </button>
+        </div>
+        
+        <!-- Floating hearts in background -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <svg class="heart-float" style="top: 10%; left: 5%" width="30" height="30" viewBox="0 0 24 24" fill="#ff6b6b">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart-float" style="top: 20%; left: 80%; animation-delay: 1s" width="20" height="20" viewBox="0 0 24 24" fill="#f472b6">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart-float" style="top: 70%; left: 15%; animation-delay: 2s" width="25" height="25" viewBox="0 0 24 24" fill="#d946ef">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart-float" style="top: 40%; left: 90%; animation-delay: 1.5s" width="15" height="15" viewBox="0 0 24 24" fill="#ec4899">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <svg class="heart-float" style="top: 80%; left: 75%; animation-delay: 0.5s" width="22" height="22" viewBox="0 0 24 24" fill="#be185d">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </div>
+        
+        <div class="message-card slide-up">
+            <div class="flex justify-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            
+            <h2 class="dancing-script text-3xl md:text-4xl text-center mb-6 text-gray-800">Happy Birthday Prachi!</h2>
+            
+            <div class="text-gray-700 leading-relaxed space-y-4">
+                <p>Happy Birthday to the prettiest girl ever,</p>
+                <p>It's been a roller coaster ride kind of journey with you and I am not sure whether you will like this or not but this is one of the few things I could do for you.</p>
+                
+                <p>You know like I wanted to do lots and lots for your birthday but shit went in some other direction, not that it matters anymore... I just want to see you smiling always, for me nothing is more important than you and nothing ever will...</p>
+                
+                <p>I am crazy in love with you or hamesha rahunga but you are with someone else but don't worry jiske sath tum khush to tumko dekh mai bhi khush...</p>
+                
+                <p class="font-semibold">With that being said,<br>HAPPY BIRTHDAY PRACHI....</p>
+                
+                <p class="text-right mt-6 dancing-script text-xl text-gray-800">Forever and ever yours,</p>
+                <p class="text-right dancing-script text-xl text-gray-800">Ishant</p>
+            </div>
+            
+            <div class="mt-10 flex justify-center">
+                <button id="continue-to-photos" class="bg-gradient-to-r from-blue-500 to-teal-400 px-8 py-3 rounded-full text-white text-lg font-semibold tracking-wide hover:from-blue-600 hover:to-teal-500 transition-all duration-300">
+                    View Photo Memories
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const landingPage = document.getElementById('landing-page');
+        const birthdayReveal = document.getElementById('birthday-reveal');
+        const photoJourney = document.getElementById('photo-journey');
+        const birthdayMessage = document.getElementById('birthday-message');
+        
+        // Navigation buttons
+        const startButton = document.getElementById('start-button');
+        const photoChoice = document.getElementById('photo-choice');
+        const messageChoice = document.getElementById('message-choice');
+        const backFromPhotos = document.getElementById('back-from-photos');
+        const backFromMessage = document.getElementById('back-from-message');
+        const continueToMessage = document.getElementById('continue-to-message');
+        const continueToPhotos = document.getElementById('continue-to-photos');
+        
+        // Track which option was chosen first
+        let firstChoice = null;
+        
+        // Create confetti
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti-container');
+            const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#f368e0', '#ff9f43'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Random position
+                const left = Math.random() * 100;
+                confetti.style.left = `${left}%`;
+                
+                // Random color
+                const colorIndex = Math.floor(Math.random() * colors.length);
+                confetti.style.setProperty('--color', colors[colorIndex]);
+                
+                // Random size
+                const size = Math.random() * 8 + 5;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                
+                // Random rotation
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                // Random fall duration
+                const fallDuration = Math.random() * 3 + 2;
+                confetti.style.setProperty('--fall-duration', `${fallDuration}s`);
+                
+                // Add to container
+                confettiContainer.appendChild(confetti);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, fallDuration * 1000);
+            }
+        }
+        
+        // Navigation functions
+        function showBirthdayReveal() {
+            landingPage.classList.add('hidden');
+            birthdayReveal.classList.remove('hidden');
+            createConfetti();
+        }
+        
+        function showPhotoJourney() {
+            birthdayReveal.classList.add('hidden');
+            birthdayMessage.classList.add('hidden');
+            photoJourney.classList.remove('hidden');
+            
+            if (firstChoice === null) {
+                firstChoice = 'photos';
+            }
+            
+            // Add slide-up animation to each photo memory
+            const photos = document.querySelectorAll('.photo-memory');
+            photos.forEach((photo, index) => {
+                photo.classList.add('slide-up');
+                photo.style.animationDelay = `${0.2 * index}s`;
+            });
+        }
+        
+        function showBirthdayMessage() {
+            birthdayReveal.classList.add('hidden');
+            photoJourney.classList.add('hidden');
+            birthdayMessage.classList.remove('hidden');
+            
+            if (firstChoice === null) {
+                firstChoice = 'message';
+            }
+        }
+        
+        function backToReveal() {
+            photoJourney.classList.add('hidden');
+            birthdayMessage.classList.add('hidden');
+            birthdayReveal.classList.remove('hidden');
+        }
+        
+        // Event listeners
+        startButton.addEventListener('click', showBirthdayReveal);
+        photoChoice.addEventListener('click', showPhotoJourney);
+        messageChoice.addEventListener('click', showBirthdayMessage);
+        backFromPhotos.addEventListener('click', backToReveal);
+        backFromMessage.addEventListener('click', backToReveal);
+        
+        continueToMessage.addEventListener('click', () => {
+            if (firstChoice === 'photos') {
+                // If photos were seen first, now show message
+                showBirthdayMessage();
+            }
+        });
+        
+        continueToPhotos.addEventListener('click', () => {
+            if (firstChoice === 'message') {
+                // If message was read first, now show photos
+                showPhotoJourney();
+            }
+        });
+            
+        const playBirthdayMusicBtn = document.getElementById('play-birthday-music');
+        const birthdayAudio = document.getElementById('birthday-audio');
+        const musicBtnText = document.getElementById('music-btn-text');
+        
+        if (playBirthdayMusicBtn && birthdayAudio) {
+            playBirthdayMusicBtn.addEventListener('click', () => {
+                if (birthdayAudio.paused) {
+                    birthdayAudio.play();
+                    if (musicBtnText) musicBtnText.textContent = "Pause Music";
+                } else {
+                    birthdayAudio.pause();
+                    if (musicBtnText) musicBtnText.textContent = "Play Music";
+                }
+            });
+        }
+        // Play "Mitwa" music
+        
+        const playMitwaMusicBtn = document.getElementById('play-mitwa-music');
+        const mitwaAudio = document.getElementById('journey-audio');
+        const mitwaBtnText = document.getElementById('mitwa-btn-text');
+        
+        if (playMitwaMusicBtn && mitwaAudio) {
+            playMitwaMusicBtn.addEventListener('click', () => {
+                if (mitwaAudio.paused) {
+                    mitwaAudio.play();
+                    if (mitwaBtnText) mitwaBtnText.textContent = 'Pause "Mitwa"';
+                } else {
+                    mitwaAudio.pause();
+                    if (mitwaBtnText) mitwaBtnText.textContent = 'Play "Mitwa"';
+                }
+            });
+        }
+        // Create photo wall effect
+        function createRandomPhotoFrames() {
+            const photoWall = document.querySelector('.photo-wall');
+            const emojis = ['🎂', '🎁', '🎉', '🥳', '✨', '💝', '🎊', '🎈', '🎵', '🎶'];
+            const bgColors = ['bg-pink-100', 'bg-blue-100', 'bg-yellow-100', 'bg-green-100', 'bg-purple-100', 'bg-red-100'];
+            
+            for (let i = 0; i < 6; i++) {
+                const frame = document.createElement('div');
+                frame.classList.add('photo-frame');
+                
+                // Random position
+                const top = Math.random() * 80 + 10;
+                const left = Math.random() * 80 + 10;
+                frame.style.top = `${top}%`;
+                frame.style.left = `${left}%`;
+                
+                // Random rotation
+                const rotation = (Math.random() * 20) - 10;
+                frame.style.setProperty('--rotation', `${rotation}deg`);
+                
+                // Create inner content
+                const inner = document.createElement('div');
+                inner.classList.add(bgColors[Math.floor(Math.random() * bgColors.length)], 'h-24', 'w-24', 'md:h-32', 'md:w-32', 'flex', 'items-center', 'justify-center', 'rounded');
+                
+                const emoji = document.createElement('span');
+                emoji.classList.add('text-4xl', 'md:text-5xl');
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                inner.appendChild(emoji);
+                frame.appendChild(inner);
+                photoWall.appendChild(frame);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add more photo frames to the background
+            createRandomPhotoFrames();
+            
+            // Add animation classes to photo memories
+            const photoMemories = document.querySelectorAll('.photo-memory');
+            photoMemories.forEach((memory, index) => {
+                memory.classList.add('fade-in');
+                memory.style.animationDelay = `${0.2 * index}s`;
+            });
+        });
+    </script>
+</body>
+</html>
